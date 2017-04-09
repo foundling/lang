@@ -1,0 +1,7 @@
+- artist from all playlists with most albums
+- artist for each playlist with most songs
+- playlists with most unique artists
+- artists with most albums
+- artists with most total songs
+- average track count for each album for each artist
+- average track count for each artists
