@@ -1,7 +1,21 @@
 .headers on
 .mode column
 
--- goal: get (album count, artist) ordered by album count descending
+-- GOAL: find album with longest track and its correspondign track name.
+-- 
+-- select 
+--     albums.Title,
+--     tracks.Name,
+--     max(tracks.milliseconds) 
+-- 
+-- from 
+--     tracks
+-- 
+-- inner join albums on
+--     tracks.AlbumId = albums.AlbumId;
+
+
+-- GOAL: get (album count, artist) ordered by album count descending
 -- 
 -- SELECT 
 --     count( albums.Title ) as albumCount, artists.Name
@@ -17,24 +31,6 @@
 -- 
 -- ORDER BY
 --     albumCount;
-
-
--- goal: get artist from playlists with the most albums
-
-SELECT
-    artists.Name
-
-FROM
-    playlists
-
-INNER JOIN on artists
-    artists.ArtistId=playlists.ArtistId
-
-INNER JOIN on playlist_track
-    playlist_track.PlaylistId=playlists.PlaylistId;
-
-GROUP BY
-     
 
 
 
