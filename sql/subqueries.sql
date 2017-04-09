@@ -1,7 +1,7 @@
 .headers on
 .mode column
 
--- goal: find average track count for all albums across artists
+-- GOAL: find average track count for all albums across artists
 
 -- SELECT 
 --     avg ( sub.trackCount ) as average,
@@ -31,16 +31,18 @@
 
 
 
--- goal: find average track count across albums for each artist 
+-- GOAL: find average track count across albums for each artist 
 
 SELECT
-    sub.artistName,
-    avg(sub.trackCount)
+    sub.artistName as 'Artist Name',
+    avg(sub.trackCount) as 'Track Count',
+    max(sub.trackCount) as 'Min Tracks',
+    min(sub.trackCount) as 'Max Tracks',
+    count(sub.albumTitle) as 'Total Albums'
 
 FROM
     (
 
-        -- goal: find albums and their track counts for each artist
         SELECT 
             artists.Name as artistName,
             albums.Title albumTitle,
@@ -60,4 +62,4 @@ FROM
     ) sub
 
 GROUP BY sub.artistName
-ORDER BY sub.artistName;
+ORDER BY sub.artistName ASC;
