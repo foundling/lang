@@ -1,6 +1,6 @@
 xs = [1 .. 10]
 
---abs' :: (Ord a, Num a) => a -> a
+abs' :: (Ord a, Num a) => a -> a
 abs' a 
     | a >= 0 = a
     | otherwise = (-a)
@@ -78,3 +78,15 @@ sorted' xs = and [ x <= y | (x,y) <- pairs' xs ]
 reverse' :: [x] -> [x]
 reverse' [] = []
 reverse' (x:xs) = reverse xs ++ [x] 
+
+factorial n
+    | n == 1 = 1
+    | otherwise = n * factorial (n - 1)
+
+factorial' n = product [1 .. n]
+
+factors n = [ x | x <- [1..n], n `mod` x == 0 ]  
+
+primes n = [x | x <- [2 .. n], not $ x `elem` nonprimes ]
+    where
+        nonprimes = [x | y <- [2 .. n], x <- [2*y, 2*y + y .. n]]  
