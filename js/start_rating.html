@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+
+    <head>
+        <style>
+            html, body, body * {
+                margin: 0;
+                padding: 0;
+            }
+            h1 {
+                display: inline-block;
+                margin-right: 10px;
+            }
+            ul, li {
+                margin: 0;
+                padding: 0;
+            }
+
+            ul {
+                width: 400px;
+            }
+
+            li {
+                display: inline-block;
+                width: 20%;
+                text-align: left;
+                background: white;
+            }
+
+            li:before { 
+                content: "☆";
+            }
+
+            li.selected:before {
+                content: "★";
+            }
+        </style>
+    </head>
+    <body>
+        <h1 class="rating-label">Star Rating: <span class="rating-value"></span><h1>
+        <ul class="rate-product">
+            <li></li><li></li><li></li><li></li><li></li>
+        </ul>
+        <script
+            src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+            crossorigin="anonymous">
+        </script>
+        <script>
+            let rated = false;
+            let rating = -1;
+            $lis = $('ul.rate-product > li');
+            $lis.click(rateOrClear);
+            $lis.hover(showPotentialRating);
+            $lis.mouseleave(removePotentialRating);
+            function rateOrClear(e) {
+                if (rated && rating === $(e.target).index()) 
+                    clear(e);
+                else {
+                    clear(e); 
+                    rate(e);
+                }
+            }
+            function rate(e) {
+                rated = true;
+                rating = $(e.target).index();
+                for (let i = 0; i <= rating; ++i) {
+                    $($lis[i]).addClass('selected');
+                }
+            }
+            function clear(e) {
+                rated = false;
+                rating = -1;
+                $lis.removeClass('selected');
+            }
+            function showPotentialRating(e) {
+                let potentialRating = $(e.target).index();
+                for (let i = 0; i <= potentialRating; ++i) {
+                    $($lis[i]).addClass('selected');
+                }
+            }
+            function removePotentialRating(e) {
+                for (let end = $lis.length - 1; end > rating; --end) {
+                    $($lis[end]).removeClass('selected');
+                } 
+            }
+        </script>
+    </body>
+
+</html>

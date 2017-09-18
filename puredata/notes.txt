@@ -1,0 +1,6 @@
+manual: https://puredata.info/docs/manuals/pd/x2.htm
+
+control objects are discrete(midi messages). e.g. 'notein', 'stripnote','mtof'
+tilde objects are continuous(audio streams)., e.g. 'osc~ 0' '*~ 0.1'
+
+control objects insert calculations between the audio computations that change the audio parameters like osc freq..

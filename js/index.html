@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html>
+    <body>
+    </body>
+
+    <input id="comment-input"></input>
+    <button id="submit" type="submit">ok</button>
+    <ul id="comments-list"></ul>
+    <script>
+        let input = document.getElementById('comment-input');
+        let submit = document.getElementById('submit');
+        let commentsList = document.getElementById('comments-list');
+        submit.onclick = function() {
+            let li = document.createElement('li');
+            li.appendChild(document.createTextNode(input.value));
+            commentsList.appendChild(li);
+        };
+    </script>
+</html>
