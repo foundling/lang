@@ -1,0 +1,3 @@
+#!/usr/bin/env gforth
+
+1 2 + .s
