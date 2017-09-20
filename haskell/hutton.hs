@@ -1,3 +1,5 @@
+import Data.Char
+
 xs = [1 .. 10]
 
 abs' :: (Ord a, Num a) => a -> a
@@ -90,3 +92,25 @@ factors n = [ x | x <- [1..n], n `mod` x == 0 ]
 primes n = [x | x <- [2 .. n], not $ x `elem` nonprimes ]
     where
         nonprimes = [x | y <- [2 .. n], x <- [2*y, 2*y + y .. n]]  
+
+lower' xs
+    | (length xs) == 0 = 0
+    | elem (head xs) ['a' .. 'z'] = 1 + lower' (tail xs)
+    | otherwise = lower' (tail xs)
+
+
+lower'' :: [Char] -> Int
+lower'' xs = length [x | x <- xs, elem x ['a' .. 'z']]
+
+count' s xs = length [ x | x <- xs , x == s ] 
+
+let2int :: Char -> Int
+let2int x = ord x - ord 'a' 
+
+int2let :: Int -> Char
+int2let n = chr (ord 'a' + n)
+
+isLower' :: Char -> Bool 
+isLower' x = elem x ['a'..'z']   
+
+-- shift :: Int -> Char -> Char
