@@ -24,10 +24,12 @@ pyths n = [(x,y,z) |
 factors :: Int -> [Int]
 factors n = [ x | x <- [1..n], n `mod` x == 0 ]
 
--- revise this one
 perfects :: Int -> [Int]
 perfects n = perfectNumbers
     where
         nums = [1 .. n] 
         factorGroups = [(x,init $ factors x) | x <- nums ]
         perfectNumbers = [ fst (x,y) | (x,y) <- factorGroups, sum y == x ]
+
+-- one comp, two gens
+equiv = [(x,y) | x <- [1,2], y <- [3,4]] == concat [ [ (x,y) | y <- [3,4] ] | x <- [1,2]] 
