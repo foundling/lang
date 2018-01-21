@@ -1,0 +1,39 @@
+p {
+  text-align: center;
+}
+
+.Grid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.Grid-item {
+  width: 100%;
+  background: firebrick;
+  margin-top: 2%;
+}
+@media (min-width: 48rem) {
+  .Grid-item {
+    width: 49%;
+  }
+  .Grid-item:nth-child(odd) {
+    background: grey;
+    margin-right: 2%;
+  }
+}
+@media (min-width: 62rem) {
+  .Grid-item {
+    width: 23.5%;
+  }
+  .Grid-item:not(:nth-child(4n)) {
+    background: grey;
+    margin-right: 2%;
+  }
+}
+.Grid-item:before {
+  content: "";
+  float: left;
+  padding-top: 100%;
+}

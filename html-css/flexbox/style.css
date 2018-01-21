@@ -1,0 +1,69 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: sans-serif;
+}
+html, body, body * {
+    box-sizing: border-box;
+}
+h1 {
+    font-size: 14px;
+}
+.box {
+    border: 20px solid white;
+    height: 0;
+    font-family: sans-serif;
+    color: white;
+    font-size: 4em;
+    text-align: center;
+    text-shadow: 4px 4px 4px black;
+    background: url(notask.png);
+    background-size: cover;
+}
+.box:nth-child(2) {
+}
+.box:nth-child(3) {
+}
+.box:nth-child(4) {
+}
+.box:nth-child(5) {
+}
+.box:nth-child(6) {
+}
+.box:nth-child(7) {
+}
+.box:nth-child(8) {
+}
+.box:last-child {
+}
+
+.container {
+    justify-content: left;
+    width: 100%;
+    display: flex;
+    height: 100vh;
+    flex-wrap: wrap;
+    flex-grow: 2;
+}
+
+@media (max-width: 700px) {
+    .box {
+        margin: 0;
+        flex-basis: 100%;
+        padding-bottom: 100%;
+    }
+}
+@media (min-width: 701px) {
+    .box {
+        flex-basis: 50%;
+        padding-bottom: 50%;
+    }
+}
+@media (min-width: 1100px) {
+    .box {
+        flex-basis: calc(100%/3);
+        padding-bottom: calc(100%/3 - 40px);
+    }
+}
