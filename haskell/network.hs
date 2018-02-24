@@ -1,12 +1,11 @@
-{-
- -
- - 185.201.44.30/22
- -
- -
- -octet ('.':xs) = [""] : octet xs
- -}
+notDot :: Char -> Bool
+notDot = (/=) '.'
 
-octet :: String -> [String] 
-octet "" = []
-octet ('.':xs) = octet xs -- add to array,: 
-octet (x:xs) = [x] : (octet xs) -- append to string, ++
+octets :: String -> [String]
+octets [] = []
+octets xs = octet : octets (drop (nCollected + 1) xs)
+    where
+        octet = takeWhile notDot xs
+        nCollected = length octet
+
+
