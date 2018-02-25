@@ -30,6 +30,9 @@ decToBin x = (decToBin dividend) ++ [remainder]
         (dividend, remainder) = divMod x 2 
 
 makeByte :: [Int] -> [Int] 
-makeByte bits = take 8 $ (replicate n 0) ++ bits 
+makeByte bits = (replicate n 0) ++ bits 
     where
         n = 8 - (length bits)
+
+toBytes ip = map makeByte $ map decToBin (octets ip)
+
