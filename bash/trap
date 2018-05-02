@@ -1,0 +1,8 @@
+#!/bin/bash
+
+trap "echo Booh!" SIGINT SIGTERM
+
+while :
+do
+    sleep 1
+done

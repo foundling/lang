@@ -1,0 +1,18 @@
+{--
+
+    snap: packages for web apis
+    :!ls -> run shell command from ghci
+    :edit
+    stack build --exec 
+    () is of type unit
+    functions are values are functions
+    x :: Int
+    x = 5 
+    -- x is a function with no arguments
+    -- >>=
+
+    do - desugars to bind or then, >>
+    in bind: argument is discarded?
+    
+
+--}

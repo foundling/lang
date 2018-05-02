@@ -1,18 +1,16 @@
 import Data.Char
 
-testIP = "192.168.2.8"
-
 notDot :: Char -> Bool
 notDot = (/=) '.'
 
 charsToDigit :: [Char] -> [Int]
 charsToDigit = map digitToInt 
 
-productOfPair :: (Int, Int) -> Int  
-productOfPair (a,b) = a * b
+pairProduct :: (Int, Int) -> Int  
+pairProduct (a,b) = a * b
 
 digitsToDecimal :: [Int] -> Int
-digitsToDecimal digits = sum $ map productOfPair $ zip reversedDigits powersOfTen
+digitsToDecimal digits = sum $ map pairProduct $ zip reversedDigits powersOfTen
     where 
         reversedDigits = reverse digits
         powersOfTen = iterate (*10) 1
@@ -32,7 +30,7 @@ decToBin x = (decToBin dividend) ++ [remainder]
         (dividend, remainder) = divMod x 2 
 
 binToDec :: [Int] -> Int
-binToDec bits = sum $ map productOfPair (zip (reverse bits) $ iterate (*2) 1)
+binToDec bits = sum $ map pairProduct (zip (reverse bits) $ iterate (*2) 1)
 
 makeByte :: [Int] -> [Int] 
 makeByte bits = (replicate n 0) ++ bits 
@@ -48,7 +46,7 @@ bitmask n maskValue = take 32 $ (replicate n maskValue) ++ (repeat complement)
         complement = (maskValue + 1) `mod` 2
 
 gateway :: String -> Int -> [Int]
-gateway ip networkSize = map productOfPair $ zip (toBits ip) (bitmask networkSize 1)
+gateway ip networkSize = map pairProduct $ zip (toBits ip) (bitmask networkSize 1)
 
 hostNumber :: String -> Int  -> Int
-hostNumber ip networkSize = binToDec $ map productOfPair $ zip (toBits ip) (bitmask networkSize 0)  
+hostNumber ip networkSize = binToDec $ map pairProduct $ zip (toBits ip) (bitmask networkSize 0)  

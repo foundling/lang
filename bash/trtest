@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# convert row file into a column file
+# row.txt
+# col.txt
+
+read line < row.txt 
+
+for char in $line
+do
+    echo $char >> col.txt
+done
+
