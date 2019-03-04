@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf8" />
+        <style>
+          html {
+            font-family: Helvetica;
+            background: whitesmoke;
+          }
+          html, body, body * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+          }
+          html, body {
+            height: 100%;
+          }
+          section {
+            display: flex;
+          }
+          li {
+            list-style-type: none;
+          }
+          .app {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+          }
+          .app-body {
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+          }
+          .app-nav {
+            justify-content: center;
+            padding: 1% 0% 0% 1%;
+            flex: 0.3;
+          }
+          .app-nav ul {
+            padding-top: 2%;
+          }
+          .app-nav li {
+            padding: 0% 5%;
+          }
+          .app-content {
+            flex: 4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: lightgreen;
+          }
+          .studies-grid {
+            display: flex;
+            flex-wrap: wrap;
+          }
+          .studies-grid > .square {
+            justify-content: center;
+            align-items: center;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            flex: 0 0 50%;
+            background: lightgray;
+          }
+          .app-nav {
+          }
+          .app-footer {
+            display: flex;
+            align-items: center;
+            padding: 5px;
+            padding-left: 25px;
+            height: 35px;
+            width: 100%;
+          }
+          .app-spacer {
+            flex: 0.3;
+          }
+        </style>
+    </head>
+    <body>
+      <div class="app">
+
+        <section class="app-body">
+          <aside class="app-nav">
+            <h1>fbtrack</h1>
+            <ul>
+              <li>home</li>
+              <li>studies</li>
+              <li>users</li>
+              <li>settings</li>
+              <li>extensions</li>
+            </ul>
+          </aside>
+
+          <section class="app-content">
+            <div class="studies-grid">
+              <div class="square">a</div>
+              <div class="square">b</div>
+              <div class="square">c</div>
+              <div class="square">d</div>
+            </div>
+          </section>
+          <aside class="app-spacer"></aside>
+
+        </section>
+
+        <footer class="app-footer">copyright Alex Ramsdell, 2019. All Rights Reserved.</footer>
+
+      </div>
+    </body>
+</html>
