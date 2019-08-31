@@ -1,0 +1,6 @@
+#!/bin/bash
+
+echo -n "name: " 
+read name
+
+echo you said $name

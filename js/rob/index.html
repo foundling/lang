@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf8" />
+        <style>
+          
+          html, body {
+            height: 100%;
+          }
+          .question-header,
+          .question-body {
+            display: block
+          }
+
+          i,
+          label,
+          textarea,
+          .rating-group {
+            display: inline-block;
+          }
+
+          .question-body {
+            max-height: 400px;
+          }
+
+          textarea,
+          .rating-group {
+            margin-top: 0;
+            margin-bottom: 0;
+            height: 100%;
+          }
+
+        </style>
+
+    </head>
+    <body>
+      <div>
+
+        <div class="question-header">
+          <i>i</i> <label>Random Sequence Generation (Selection Bias)</label>
+        </div>
+
+        <div class="question-body">
+          <textarea placeholder="Quote/Comments"></textarea>
+          <ul class="rating-group">
+            <li class="rating">Yes (Low Risk)</li>
+            <li class="rating">No (High Risk)</li>
+            <li class="rating">Unclear</li>
+          </ul>
+        </div>
+
+      </div>
+      <script src="./node_modules/alkali/dist/index.js"></script>
+      <script src="./app.js"></script>
+    </body>
+</html>

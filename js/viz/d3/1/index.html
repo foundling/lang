@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+  <head>
+    <style>
+    </style>
+    <script src="http://d3js.org/d3.v4.js"></script>
+  </head>
+  <body>
+    <svg class="bar-chart"></svg>
+    <script>
+      const id = x => x
+      const dataset = [500,400,120,450,80]
+      const svgWidth = 400
+      const svgHeight = 400
+      const padding = 10
+      const barWidth = (svgWidth / dataset.length) - padding  
+      const svg = d3.select('svg')
+        .attr('height', svgHeight)
+        .attr('width', svgWidth)
+        .attr('background', 'whitesmoke')
+
+      const scale = d3.scaleLinear()
+        .domain([0, d3.max(dataset)])
+        .range([0, svgHeight])
+
+      const barChart = svg.selectAll('rect')
+        .data(dataset)
+        .enter()
+        .append('rect')
+        .attr('fill', 'coral')
+        .attr('y', d => svgHeight - scale(d))
+        .attr('x', (d, i) => i * (barWidth + padding))
+        .attr('width', barWidth)
+        .attr('height', scale)
+
+
+
+    </script>
+  </body>
+</html>

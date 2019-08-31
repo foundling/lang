@@ -16,3 +16,44 @@
     
 
 --}
+
+{--
+
+lhs: names, arguments
+rhs: expressions
+a=5 -- a  is 5
+a=6 -- okay in ghci, but not a mutation. new a shadows old a.
+
+each line in ghci introduces a new scope.
+
+functions are values, values are functions that take no arguments - nullary function with arity 0
+
+a :: Num p => p
+p is a type variable, it's polymorphic
+"a has type p and p satisfies the type constraint Num"
+
+TYPECLASSES VS INTERFACES
+- interfaces (abstract classes) require dynamic dispatch @ runtime
+- typeclasses are resolved at compile-time
+- open polymorphism ? - you can create instances of another type
+
+FUNCTIONS
+
+- values are not functions, 
+- functions are values
+- all fns are curried
+
+
+main :: IO ()
+IO doesn't return anything to the caller
+main is an action (not a function) that returns () to the caller
+() is unit type, has one value, conveys no information to caller
+
+main is not a function, a value
+
+IMPORTS
+
+import Snap.Core ( Snap, getParam )
+
+--}
+

@@ -1,0 +1,3 @@
+currying vs partial application
+currying is the equivalence between f a b and (f a) b and f (a b)
+partial application is applying a function to less arguments than it requires

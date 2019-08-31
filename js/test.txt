@@ -1,0 +1,5 @@
+name,age,position
+bob,30,test engineer
+jan,32,project manager
+bjorn, 41, ceo
+dave, 12, programmer

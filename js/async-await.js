@@ -1,5 +1,8 @@
+const fetch = require('node-fetch')
+
 async function fn() {
-    return 1;
+  let res = await fetch('https://google.com')
+  return res
 }
 
-fn().then(console.log);
+fn().then(res => console.log(res.body));

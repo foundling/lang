@@ -1,0 +1,21 @@
+{
+  "name": "js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "anagrams.js",
+  "dependencies": {
+    "highland": "^2.13.0",
+    "koa": "^2.5.2",
+    "koa-router": "^7.4.0",
+    "lodash": "^4.17.10",
+    "node-fetch": "^1.7.3",
+    "ramda": "^0.25.0",
+    "rxjs": "^6.3.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

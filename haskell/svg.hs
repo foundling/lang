@@ -8,7 +8,7 @@ type Length = Int
 data Color = Red | Green | Blue
              deriving (Eq, Show)
 
-data Type = Point | Line
+data Type = Point | Line | PlaneFigure
              deriving (Eq, Show)
 
 data Shape = Circle Pos Length
@@ -36,6 +36,9 @@ hasColor c (E _ c') = c==c'
 hasType :: Type -> SVGPred
 hasType Point (E (Polyline [_]) _) = True
 hasType Line  (E (Polyline _) _) = True
+hasType PlaneFigure (E (Circle _ _) _) = True
+hasType PlaneFigure (E (Rect _ _ _ _) _) = True
+hasType _ _ = False
 
 (/\) :: SVGPred -> SVGPred -> SVGPred
 p /\ q = \e -> p e && q e
@@ -51,14 +54,29 @@ addPositions a b = ((fst a + fst b),(snd a + snd b))
 select :: SVGPred -> SVG -> SVG
 select p (SVG es) = SVG (filter p es)
 
+
 -- Transformations
---
 setColorTo :: Color -> SVGElement -> SVGElement
 setColorTo c (E s _) = E s c
 
+{--
+ -
+ - translate
+ - remove
+ - duplicate
+ - rotate d
+ - reflect axis
+ - append
+ - prepend
+ - replace
+ - select one
+ - select nth
+ - align <left,right,top,bottom>
+ --}
+
 translate :: Pos -> SVGElement -> SVGElement 
-translate (x',y') (E (Circle (x,y) r) c) = E (Circle (x + x', y + y') r) c  
-translate (x',y') (E (Rect (x1,y1) (x2,y2) (x3,y3) (x4,y4)) c) = E (Rect (x1 + x', y1 + y') (x2 + x', y2 + y') (x3 + x', y3 + y') (x4 + x', y4 + y')) c
+translate pos' (E (Circle pos r) c) = E (Circle (addPositions pos' pos) r) c
+translate pos' (E (Rect p1 p2 p3 p4) c) = E (Rect (addPositions pos' p1) (addPositions pos' p2) (addPositions pos' p3) (addPositions pos' p4)) c
 translate pos' (E (Polyline ps) c) = E (Polyline (map (addPositions pos') ps)) c 
 
 -- Examples
@@ -66,23 +84,5 @@ translate pos' (E (Polyline ps) c) = E (Polyline (map (addPositions pos') ps)) c
 mkRedLinesBlue :: SVG -> SVG
 mkRedLinesBlue = mapSVG (setColorTo Blue) . select (hasColor Red /\ hasType Line)
 
-
--- tests
---
-
-isBlue :: SVGElement -> Bool 
-isBlue (E _ c) = c == Blue 
-
-getColor :: SVGElement -> Color
-getColor (E _ c) = c 
-
-getColors :: SVG -> [Color]
-getColors (SVG xs) = map getColor xs
-
-getRadius :: SVGElement -> Int 
-getRadius (E (Circle (x,y) r) c) = r  
-
-getRadii :: SVG -> [Int]
-getRadii (SVG xs) = map getRadius xs
-
---svg = SVG [E (Circle (0,1) 3) Blue, E (Circle (4,2) 10) Red, E (Circle (4,2) 10) Green]
+moveRedCircles :: Pos -> SVG -> SVG 
+moveRedCircles p = mapSVG (translate p) . select (hasType PlaneFigure /\ hasColor Red) 
